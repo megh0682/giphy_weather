@@ -1,0 +1,37 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Giphy Magic Weather</title>
+	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script><!--load isotope.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css"></head>
+<body>
+<p>Adds "view original image" link to caption that just opens image via default browser method.</p>
+<a href="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Christmas_flood_1717.jpg/1280px-Christmas_flood_1717.jpg" class="with-caption image-link" title="Caption text">
+  <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Christmas_flood_1717.jpg/1280px-Christmas_flood_1717.jpg" width="172" height="105" />  
+</a>
+<script type="text/javascript">
+$('a').magnificPopup({
+    type: 'image',
+    closeBtnInside: false,
+    closeOnContentClick: true,
+  
+    image: {
+      verticalFit: true,
+      titleSrc: function(item) {
+        return item.el.attr('title') + ' &middot; <a class="image-source-link" href="'+item.src+'" target="_blank">open original</a>';
+      }
+    }
+  
+  });
+</script>
+</body>
+</html>

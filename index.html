@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Giphy Magic Weather</title>
+	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script><!--load isotope.js-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script  type="text/javascript" src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyA8VboX9wq5znICrb9ml-xVVOwzaM3Cy0I	"></script>
+</head>
+<body>
+<div class="container text-center">
+   <!--div class="row page-header">
+      <div class="col-md-12">
+      <h1> Weather Gifs</h1>
+      <small>gifs everywhere!</small>
+      </div>
+   </div-->
+   <div class="row" id="queryContainer">
+      <form class="form-group">
+        <div class="col-md-4">
+        <input class="form-control" type="text" id="gifSearch" name="gifSearch" placeholder="enter a word or a phrase"/> 
+        <input class="form-control" type="number" id="zipcode" name="zipcode" placeholder="enter your zipcode"/> 
+        <button class="form-control btn btn-default" type="submit"  id="submitBtn" >submit</button>
+        </div>
+        <div class="col-md-8">
+           <div id="map"></div>
+        
+        </div>
+      </form><!-- form ends-->
+   </div>
+</div><!--search container ends-->
+<div class="container">
+ <div id="gifImagesHere" class="row">
+ <div id="1" class="post item span3">
+      <div class="well">
+        <img class="thumbnail" src="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif">
+        <div class="info">
+          <a href="http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4" title="see the video" class="video"><span class="glyphicon glyphicon-film fa-lg	"></span></a>
+          <a href="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif" title="see the gifImagesHere" class="pull-right"><span class="glyphicon glyphicon-resize-full fa-lg"></span></a>
+        </div>
+      </div>
+ </div>
+ 
+
+ </div><!-- gifImagesHere ends -->
+</div><!--image container ends-->
+</body>
+</html>
