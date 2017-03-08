@@ -1,10 +1,21 @@
 $(document).ready(function(){
 
-/*****************************************************fetch zipcode from UI and get lat/long to put a marker on google maps*******************************/
-//var zipcode = $("#zipcode").val();
-var zipcode = 78717;
+var zipcode = "";
 var lat="";
 var lng="";
+
+/*********************************button on click**********************************************************************************************************/
+
+$("body").on("click","#submitBtn",function(event){
+
+    event.preventDefault();
+    zipcode = $("#zipcode").val().trim();
+    getLatLonFromZipcode();
+
+
+});
+/*****************************************************fetch zipcode from UI and get lat/long to put a marker on google maps*******************************/
+
 var getLatLonFromZipcode = function(){
 
 	 $.ajax({
@@ -30,7 +41,7 @@ var getLatLonFromZipcode = function(){
 	});
 
 }
-getLatLonFromZipcode();
+
 /********************************display map on UI ************************************************************************************************/
 
 function initMap() {
@@ -73,14 +84,12 @@ var getforecast = function(url){
     currentWeather_summary=response.currently.summary;
     console.log(currentWeather_summary);
     sevenDayWeather = response.daily.data.slice();
-    for (var n=0; n < response['daily']['data'].length; n++) {
-         showDayForecast( response['daily']['data'][n] );
-     }
     console.log(sevenDayWeather);
     sevenDayWeather_icon = response.daily.icon;
     console.log(sevenDayWeather_icon);
     sevenDayWeather_summary = response.daily.summary;
     console.log(sevenDayWeather_summary);
+    showDayForecast();
   })
   .fail(function() {
   	console.log("error");
@@ -96,60 +105,96 @@ var getforecast = function(url){
 
 /***************************************************pass the icon param from the response of the eac forecast to giphy translate api to fetch a random pic and display the pic*********************************/
 
- var showDayForecast = function (forecast) {
-            var date = new Date(forecast['time'] * 1000);
-            var day = date.getDay(); // 0-6
-            var days = [
-                'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
-            ];
-            var dayOfWeek = days[day];
-            console.log(dayOfWeek);
-            var url_mp4_array = getImage(forecast['icon'], forecast['time']);
-            console.log(url_mp4_array);
-            var image_url = url_mp4_array['image'];
-            console.log(image_url);
-            var video_mp4 = url_mp4_array['video'];
-            console.log(video_mp4);
+ var showDayForecast = function () {
 
-            //Display on UI
-            var outerDiv = $("<div></div>");
+            debugger;
+            var dailyDataLen = sevenDayWeather.length;
+            for(var i=0;i<dailyDataLen;i++){
+
+              var forecast = sevenDayWeather[i];
+              var date = new Date(forecast['time'] * 1000);
+              var day = date.getDay(); // 0-6
+              var days = [
+                'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
+              ];
+              var dayOfWeek = days[day];
+              console.log(dayOfWeek);
+              //var url_mp4_array = getImage(forecast['icon'], forecast['time']);
+              var url_mp4_array = {
+
+              'image':'http://media4.giphy.com/media/SWYSIUQOD5XW/200.gif',
+              'video':'http://media4.giphy.com/media/SWYSIUQOD5XW/giphy-preview.mp4'
+
+            };
+              console.log(url_mp4_array);
+              var image_url = url_mp4_array['image'];
+              console.log(image_url);
+              var video_mp4 = url_mp4_array['video'];
+              console.log(video_mp4);
+              var j = i+1;
+              $("#img"+j).attr('src', image_url);
+              $("#video"+j).attr('href',video_mp4);
+              $("#image"+j).attr('href',image_url);
+              $("#img1").attr('src', image_url);
+              $("#video1").attr('href',video_mp4);
+              $("#image1").attr('href',image_url);
+
+            }
+                        
+            /*var url_mp4_array = {
+
+              'image':'https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif',
+              'video':'http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4'
+
+            };*/            
+
+            //Display on UI         
+            /*var outerDiv = $("<div></div>");
             outerDiv.attr("id",dayOfWeek);
             outerDiv.addClass('post').addClass('span3').addClass('item');
             var middleDiv=$("<div></div>");
             middleDiv.addClass('well')
             var innerDiv = $("<div></div>");
             innerDiv.addClass('info');
-            innerDiv.appendTo('middleDiv');
-            middleDiv.appendTo('outerDiv');
-            outerDiv.appendTo('#gifImagesHere');
-
+            
             //anchor for video
             var elea1 = $("<a class=\"video\"></a>");
-            elea1.attr({
-            	'href' : url_mp4_array[1],
-            	'title': 'see the video'
-            });
+            elea1.attr('href',url_mp4_array['video']).attr('title','see the video');
             var span1 = $("<span></span>");
             span1.addClass('glyphicon').addClass('glyphicon-film').addClass('fa-lg');
-            span1.appendTo('elea1');
-            elea1.appendTo('innerDiv');
+            //span1.appendTo('elea1');
+            elea1.html(span1);
+            //elea1.appendTo('innerDiv');
+
             //anchor for image
             var elea2 = $("<a class=\"pull-right\"></a>");
-            elea2.attr({
-            	'href' : url_mp4_array[0],
-            	'title': 'see the image'
-            });
+            elea2.attr('href',url_mp4_array['image']).attr('title','see the image');
             var span2 = $("<span></span>");
             span2.addClass('glyphicon').addClass('glyphicon-resize-full').addClass('fa-lg');
-            span2.appendTo('elea2');
-            elea2.appendTo('innerDiv');
+            //span2.appendTo('elea2');
+            elea2.html(span2);
+            innerDiv.append(elea1);
+            innerDiv.append(elea2);
+            //elea2.appendTo('innerDiv');
+            //$("#gifImagesHere").append(elea1);
 
             //create an img element, add thumbnail class and append to middle div
-            var eleimg = $("<img>");
+            var eleimg = $("<img></img>");
             eleimg.addClass('thumbnail');
-            eleimg.attr('href',url_mp4_array[0]);
-            eleimg.appendTo('middleDiv');
-           
+            eleimg.attr('src',url_mp4_array['image']);
+            middleDiv.append(innerDiv);
+            //eleimg.appendTo('middleDiv');
+            middleDiv.html(eleimg);
+            
+            //middleDiv.appendTo('#gifImagesHere');
+
+            //append divs
+            //innerDiv.appendTo('middleDiv');
+            middleDiv.appendTo('outerDiv');
+            //$("#gifImagesHere").append(outerDiv);
+            */
+
+                      
 
         };
 
@@ -170,7 +215,7 @@ var getImage = function (iconName, time) {
             };
             
             $.ajax({
-            	url:'http://api.giphy.com/v1/gifs/translate?s=clear+sky&api_key=dc6zaTOxFJmzC',
+            	url:"http://api.giphy.com/v1/gifs/translate?s="+ searchTerms[iconName]+"&api_key=dc6zaTOxFJmzC",
             	type:'GET'
             })
             .done(function(results) {
