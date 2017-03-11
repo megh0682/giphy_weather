@@ -18,91 +18,127 @@
 </head>
 <body>
 <div class="container text-center">
-   <!--div class="row page-header">
+   <div class="row page-header">
       <div class="col-md-12">
-      <h1> Weather Gifs</h1>
-      <small>gifs everywhere!</small>
-      </div>
-   </div-->
-   <div class="row" id="queryContainer">
-      <form class="form-group">
-        <div class="col-md-4">
-        <input class="form-control" type="text" id="gifSearch" name="gifSearch" placeholder="enter a word or a phrase"/> 
-        <input class="form-control" type="number" id="zipcode" name="zipcode" placeholder="enter your zipcode"/> 
+      <h1>Weather Forecast Giphy</h1>
+      <small>See how your next week looks like</small>
+       <form class="form-group">
+        <input class="form-control" type="number" id="zipcode" name="zipcode" placeholder="please enter your zipcode"/> 
         <button class="form-control btn btn-default" type="submit"  id="submitBtn" >submit</button>
-        </div>
-        <div class="col-md-8">
-           <div id="map"></div>
+       </form><!-- form ends--> 
+      </div>
+   </div>
+   <div class="row" id="queryContainer">
+      
+            <div id="map"></div>
         
-        </div>
-      </form><!-- form ends-->
+        
+     
    </div>
 </div><!--search container ends-->
 <div class="container">
- <div id="gifImagesHere" class="row">
- <div id="1" class="post item span3">
-      <div class="well">
-        <img id = "img1" class="thumbnail" src="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif">
-        <div class="info">
-          <a id="video1" href="http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4" title="see the video" class="video"><span class="glyphicon glyphicon-film fa-lg"></span></a>
-          <a id="image1" href="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif" title="see the gifImagesHere" class="pull-right"><span class="glyphicon glyphicon-resize-full fa-lg"></span></a>
+ <div class="row">
+ <div class="col-md-2"></div>
+ <div id="gifImagesHere" class="col-md-10">
+ <div id="1" class="post item">
+      
+        <img id = "img1" class="thumbnail img-responsive" src="#">
+        <div class="col text-center">
+          <div class="col-md-4">
+          <span id="badge1" class="badge"></span>
+          <a id="image1" href="#" title="see the gifImagesHere" class="pull-right img-responsive image"><span class="glyphicon glyphicon-resize-full fa-sm"></span></a>
+          <a id="video1" href="#" title="see the video" class="video img-responsive "><span class="glyphicon glyphicon-film fa-sm"></span></a>
+          </div>
+
         </div>
-      </div>
+               
+    
  </div>
- <div id="2" class="post item span3">
-      <div class="well">
-        <img id = "img2" class="thumbnail" src="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif">
-        <div class="info">
-          <a id="video2" href="http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4" title="see the video" class="video"><span class="glyphicon glyphicon-film fa-lg "></span></a>
-          <a id="image2" href="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif" title="see the gifImagesHere" class="pull-right"><span class="glyphicon glyphicon-resize-full fa-lg"></span></a>
+ <div id="2" class="post item">
+     
+        <img id = "img2" class="thumbnail img-responsive" src="#">
+        <div class="col text-center">
+          <div class="col-md-4">
+          <span id="badge2" class="badge"></span>
+          <a id="image2" href="#" title="see the gifImagesHere" class="pull-right img-responsive image"><span class="glyphicon glyphicon-resize-full fa-sm"></span></a>
+          <a id="video2" href="#" title="see the video" class="video img-responsive "><span class="glyphicon glyphicon-film fa-sm"></span></a>
+          </div>
+
         </div>
-      </div>
+        
+      
  </div>
- <div id="3" class="post item span3">
-      <div class="well">
-        <img id = "img3" class="thumbnail" src="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif">
-        <div class="info">
-          <a id="video3" href="http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4" title="see the video" class="video"><span class="glyphicon glyphicon-film fa-lg "></span></a>
-          <a id="image3" href="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif" title="see the gifImagesHere" class="pull-right"><span class="glyphicon glyphicon-resize-full fa-lg"></span></a>
+ <div id="3" class="post item">
+
+        <img id = "img3" class="thumbnail img-responsive" src="#">
+         <div class="col text-center">
+          <div class="col-md-4">
+          <span id="badge3" class="badge"></span>
+          <a id="image3" href="#" title="see the gifImagesHere" class="pull-right img-responsive image"><span class="glyphicon glyphicon-resize-full fa-sm"></span></a>
+          <a id="video3" href="#" title="see the video" class="video img-responsive "><span class="glyphicon glyphicon-film fa-sm"></span></a>
+          </div>
+
         </div>
-      </div>
+       
+      
  </div>
-  <div id="4" class="post item span3">
-      <div class="well">
-        <img id = "img4" class="thumbnail" src="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif">
-        <div class="info">
-          <a id="video4" href="http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4" title="see the video" class="video"><span class="glyphicon glyphicon-film fa-lg "></span></a>
-          <a id="image4" href="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif" title="see the gifImagesHere" class="pull-right"><span class="glyphicon glyphicon-resize-full fa-lg"></span></a>
+ <div><!--start row2-->
+ <div id="4" class="post item ">
+      
+        <img id = "img4" class="thumbnail img-responsive" src="#">
+       <div class="col text-center">
+          <div class="col-md-4">
+          <span id="badge4" class="badge"></span>
+          <a id="image4" href="#" title="see the gifImagesHere" class="pull-right img-responsive image"><span class="glyphicon glyphicon-resize-full fa-sm"></span></a>
+          <a id="video4" href="#" title="see the video" class="video img-responsive "><span class="glyphicon glyphicon-film fa-sm"></span></a>
+          </div>
+
         </div>
-      </div>
+        
  </div>
-  <div id="5" class="post item span3">
-      <div class="well">
-        <img id = "img5" class="thumbnail" src="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif">
-        <div class="info">
-          <a id="video5" href="http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4" title="see the video" class="video"><span class="glyphicon glyphicon-film fa-lg "></span></a>
-          <a id="image5" href="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif" title="see the gifImagesHere" class="pull-right"><span class="glyphicon glyphicon-resize-full fa-lg"></span></a>
+  <div id="5" class="post item">
+      
+        <img id = "img5" class="thumbnail img-responsive" src="#">
+        <div class="col text-center">
+          <div class="col-md-4">
+          <span id="badge5" class="badge"></span>
+          <a id="image5" href="#" title="see the gifImagesHere" class="pull-right img-responsive image"><span class="glyphicon glyphicon-resize-full fa-sm"></span></a>
+          <a id="video5" href="#" title="see the video" class="video img-responsive "><span class="glyphicon glyphicon-film fa-sm"></span></a>
+          </div>
+
         </div>
-      </div>
+       
+      
  </div>
-   <div id="6" class="post item span3">
-      <div class="well">
-        <img id = "img6" class="thumbnail" src="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif">
-        <div class="info">
-          <a id="video6" href="http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4" title="see the video" class="video"><span class="glyphicon glyphicon-film fa-lg "></span></a>
-          <a id="image6" href="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif" title="see the gifImagesHere" class="pull-right"><span class="glyphicon glyphicon-resize-full fa-lg"></span></a>
+   <div id="6" class="post item">
+      
+        <img id = "img6" class="thumbnail img-responsive" src="#">
+        <div class="col text-center">
+          <div class="col-md-4">
+          <span id="badge6" class="badge"></span>
+          <a id="image6" href="#" title="see the gifImagesHere" class="pull-right img-responsive image"><span class="glyphicon glyphicon-resize-full fa-sm"></span></a>
+          <a id="video6" href="#" title="see the video" class="video img-responsive "><span class="glyphicon glyphicon-film fa-sm"></span></a>
+          </div>
+
         </div>
-      </div>
- </div>
-   <div id="7" class="post item span3">
-      <div class="well">
-        <img id = "img7" class="thumbnail" src="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif">
-        <div class="info">
-          <a id="image7" href="http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4" title="see the video" class="video"><span class="glyphicon glyphicon-film fa-lg "></span></a>
-          <a id="video7" href="https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif" title="see the gifImagesHere" class="pull-right"><span class="glyphicon glyphicon-resize-full fa-lg"></span></a>
+       
+      
+ </div> 
+   <div id="7" class="post item">
+     
+        <img id = "img7" class="thumbnail img-responsive" src="#">
+        <div class="col text-center">
+          <div class="col-md-4">
+          <span id="badge7" class="badge"></span>
+          <a id="image7" href="#" title="see the gifImagesHere" class="pull-right img-responsive image"><span class="glyphicon glyphicon-resize-full fa-sm"></span></a>
+          <a id="video7" href="#" title="see the video" class="video img-responsive "><span class="glyphicon glyphicon-film fa-sm"></span></a>
+          </div>
+
         </div>
-      </div>
+        
+      
  </div>
+ </div><!--col 10 ends here-->
  </div><!-- gifImagesHere ends -->
 </div><!--image container ends-->
 </body>

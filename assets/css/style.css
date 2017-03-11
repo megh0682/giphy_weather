@@ -1,50 +1,47 @@
+body{
+  background-image: url("https://cdn-images-1.medium.com/max/2000/1*YRINRZFr0E1FRJ4JpizEMw.jpeg");
+  font-family: monospace;
+  font-size: 1.5em;
+}
 .container{
-	border: 1px solid grey;
+	border: none;
+}
+#gifImagesHere{
+  display:none;
+  border: 1 px solid #333;
 }
 .row{
 	height:30%;
 	padding: 30px;
 }
 .form-group{
-  
   width:75%;
   display: inline-flex;	
-
 }
-/* make the well swell */
-.well {
-	border-color:#c9c9c9;
+.item img{
+ position: relative;
+ width: 300px;
+ height: 300px;
+ float: left;
+ margin:10px;
 }
-
-.post a {
-  color: #333;
-
-}
-
-.post img.image {
-  max-width: 100%;
-  margin-top: 9px;
-}
-
-.info {
-	padding:4px;
-}
-.item{
-  position: relative;
-  float: left;
-  width: 100px;
-  height: auto;
-  margin: 5px;
-  padding: 10px;
-}
-
-animation: {
-	padding-bottom: 10px;
+.item >.col {
+position:absolute; 
+z-index: 1; 
+top: 250; 
+left:30;
 }
 #map {
    height: 100%;
 }
+  /* clear fix */
+#gifImagesHere:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 
+}
 /* Isotope Transitions
 ------------------------------- */
 .isotope,

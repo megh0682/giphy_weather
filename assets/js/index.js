@@ -119,88 +119,15 @@ var getforecast = function(url){
               ];
               var dayOfWeek = days[day];
               console.log(dayOfWeek);
-              //var url_mp4_array = getImage(forecast['icon'], forecast['time']);
-              var url_mp4_array = {
-
-              'image':'http://media4.giphy.com/media/SWYSIUQOD5XW/200.gif',
-              'video':'http://media4.giphy.com/media/SWYSIUQOD5XW/giphy-preview.mp4'
-
-            };
-              console.log(url_mp4_array);
-              var image_url = url_mp4_array['image'];
-              console.log(image_url);
-              var video_mp4 = url_mp4_array['video'];
-              console.log(video_mp4);
-              var j = i+1;
-              $("#img"+j).attr('src', image_url);
-              $("#video"+j).attr('href',video_mp4);
-              $("#image"+j).attr('href',image_url);
-              $("#img1").attr('src', image_url);
-              $("#video1").attr('href',video_mp4);
-              $("#image1").attr('href',image_url);
-
+              getImage(forecast['icon'], forecast['time'],i,dayOfWeek);
             }
-                        
-            /*var url_mp4_array = {
 
-              'image':'https://media2.giphy.com/media/USp5JGbK1HqZq/200w.gif',
-              'video':'http://media2.giphy.com/media/USp5JGbK1HqZq/giphy-preview.mp4'
+            updateWellsHeight();
+};
 
-            };*/            
-
-            //Display on UI         
-            /*var outerDiv = $("<div></div>");
-            outerDiv.attr("id",dayOfWeek);
-            outerDiv.addClass('post').addClass('span3').addClass('item');
-            var middleDiv=$("<div></div>");
-            middleDiv.addClass('well')
-            var innerDiv = $("<div></div>");
-            innerDiv.addClass('info');
-            
-            //anchor for video
-            var elea1 = $("<a class=\"video\"></a>");
-            elea1.attr('href',url_mp4_array['video']).attr('title','see the video');
-            var span1 = $("<span></span>");
-            span1.addClass('glyphicon').addClass('glyphicon-film').addClass('fa-lg');
-            //span1.appendTo('elea1');
-            elea1.html(span1);
-            //elea1.appendTo('innerDiv');
-
-            //anchor for image
-            var elea2 = $("<a class=\"pull-right\"></a>");
-            elea2.attr('href',url_mp4_array['image']).attr('title','see the image');
-            var span2 = $("<span></span>");
-            span2.addClass('glyphicon').addClass('glyphicon-resize-full').addClass('fa-lg');
-            //span2.appendTo('elea2');
-            elea2.html(span2);
-            innerDiv.append(elea1);
-            innerDiv.append(elea2);
-            //elea2.appendTo('innerDiv');
-            //$("#gifImagesHere").append(elea1);
-
-            //create an img element, add thumbnail class and append to middle div
-            var eleimg = $("<img></img>");
-            eleimg.addClass('thumbnail');
-            eleimg.attr('src',url_mp4_array['image']);
-            middleDiv.append(innerDiv);
-            //eleimg.appendTo('middleDiv');
-            middleDiv.html(eleimg);
-            
-            //middleDiv.appendTo('#gifImagesHere');
-
-            //append divs
-            //innerDiv.appendTo('middleDiv');
-            middleDiv.appendTo('outerDiv');
-            //$("#gifImagesHere").append(outerDiv);
-            */
-
-                      
-
-        };
-
-var getImage = function (iconName, time) {
+var getImage = function (iconName, time,i,dayOfWeek) {
             // Pairing Forecast.io icon values with giphy search strings.
-            var getImgVidObj = {};
+            var getImgVidObj = "";
             var searchTerms = {
                 "clear-day": "blue sky",
                 "clear-night": "stars",
@@ -220,15 +147,17 @@ var getImage = function (iconName, time) {
             })
             .done(function(results) {
             	console.log("success");
-            	var randomImage = results['data']['images']['fixed_width']['url'];
-                console.log(randomImage);
-                var randomVideo = results['data']['images']['preview']['mp4'];
-                console.log(randomVideo);
-                var obj = {};
-                obj['image'] = randomImage;
-                obj['video'] = randomVideo;
-                getImgVidObj = obj;
-                
+              $("#gifImagesHere").css("display","block");
+            	var randomImage = results['data']['images']['fixed_height']['url'];
+              console.log(randomImage);
+              var randomVideo = results['data']['images']['preview']['mp4'];
+              console.log(randomVideo);
+              var j = i+1;
+              $("#img"+j).attr('src', randomImage);
+              $("#video"+j).attr('href',randomVideo);
+              $("#image"+j).attr('href',randomImage);
+              $("#badge"+j).html(dayOfWeek);
+
             })
             .fail(function() {
             	console.log("error");
@@ -236,17 +165,25 @@ var getImage = function (iconName, time) {
             .always(function() {
             	console.log("complete");
             });
-            
-         
-            //	return getImgVidObj;
-        };
+          
+          };
 
 var randomItem = function(arrayName) {
 	       return arrayName[Math.floor(Math.random() * arrayName.length)];
         };
+var updateWellsHeight =function(){
 
+var max;
 
+/* Getting the greatest height */
+$(".post").each(function() {
+  max = ($(this).height() > max) ? $(this).height() : max;
+});
 
+/* Applying the greatest height to each element */
+$(".post").height(max);
+
+};
 
 
 /******************************************************activate magnify pop up for image***********************************************************/	
@@ -287,9 +224,11 @@ $('.video').magnificPopup({
    /* activate jquery isotope */
 $('#gifImagesHere').imagesLoaded(function(){
     $('#gifImagesHere').isotope({
-      itemSelector : '.item'
+      itemSelector : '.item',
+      layoutMode :'fitRows'
     });
  });
+
 
 	
 
