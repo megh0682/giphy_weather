@@ -142,7 +142,7 @@ var getImage = function (iconName, time,i,dayOfWeek) {
             };
             
             $.ajax({
-            	url:"http://api.giphy.com/v1/gifs/translate?s="+ searchTerms[iconName]+"&api_key=dc6zaTOxFJmzC",
+            	url:"https://api.giphy.com/v1/gifs/translate?s="+ searchTerms[iconName]+"&api_key=dc6zaTOxFJmzC",
             	type:'GET'
             })
             .done(function(results) {
